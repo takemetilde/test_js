@@ -43,7 +43,10 @@ function duplicateArray(arr) {
 
 console.log(duplicateArray(arr));
 
-// Using Closures
+// Using Closures to do this:
+// var addSix = createBase(6);
+// addSix(10); returns 16
+// addSix(21);
 function createbase(baseNumber) {
     return function(N) {
         return baseNumber + N;
@@ -80,11 +83,10 @@ function counter() {
     return {
         add: function(increment) {
             count += increment;
+            return count;
         },
         subtract: function (decrement) {
             count -= decrement;
-        },
-        retrieve: function() {
             return count;
         }
     }
@@ -92,7 +94,16 @@ function counter() {
 
 var c = counter();
 
-c.add(10);
-console.log(c.retrieve());
-c.subtract(5);
-console.log(c.retrieve());
+console.log(c.add(10));
+console.log(c.subtract(5));
+
+// Write a function to allow this: multiply(5)(6)
+
+function multiply(a) {
+    return function(b) {
+        return a * b;
+    }
+}
+
+console.log(multiply(5)(6));
+
